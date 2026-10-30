@@ -1,0 +1,6 @@
+{
+  "name": "Pulse OS — Dark Glass MP3 & Live Lyrics Player",
+  "description": "Атмосферный MP3-плеер в темном стеклянном дизайне с живой синхронизацией текста песен (LRC), плейлистами, 10-полосным эквалайзером, интерактивными виджетами, импортом из облачных хранилищ, интеграцией Spotify и SoundCloud и офлайн-кэшированием.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    --pulse-bg: #edf0f6;
+    --pulse-fg: #0f172a;
+    --pulse-thumb: var(--pulse-custom-thumb, #0f172a);
+  }
+
+  .dark {
+    --pulse-bg: #08080c;
+    --pulse-fg: #f4f4f6;
+    --pulse-thumb: var(--pulse-custom-thumb, #ffffff);
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--pulse-bg);
+    color: var(--pulse-fg);
+    overflow-x: hidden;
+    transition: background-color 220ms ease, color 220ms ease;
+  }
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Frosted glass surfaces — Light daylight pearl & Dark obsidian */
+.glass-panel {
+  isolation: isolate;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(244, 247, 252, 0.94) 100%
+  );
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+}
+
+.dark .glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgba(34, 34, 41, 0.88) 0%,
+    rgba(19, 19, 25, 0.94) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.glass-panel-elevated {
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(244, 247, 252, 0.98) 100%
+  );
+  backdrop-filter: blur(36px) saturate(150%);
+  -webkit-backdrop-filter: blur(36px) saturate(150%);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 26px 64px rgba(15, 23, 42, 0.16);
+}
+
+.dark .glass-panel-elevated {
+  background: linear-gradient(
+    165deg,
+    rgba(34, 34, 40, 0.92) 0%,
+    rgba(16, 16, 21, 0.96) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.72);
+}
+
+/* Sleek compact horizontally elongated (oval) range thumbs for seek & volume */
+input[type='range'].pulse-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range'].pulse-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+}
+
+input[type='range'].pulse-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--pulse-thumb);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  margin-top: -1.5px;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input[type='range'].pulse-range::-moz-range-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: transparent;
+}
+
+input[type='range'].pulse-range::-moz-range-thumb {
+  width: 16px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--pulse-thumb);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input[type='range'].pulse-range.pulse-range-sm::-webkit-slider-runnable-track {
+  height: 3.5px;
+}
+
+input[type='range'].pulse-range.pulse-range-sm::-webkit-slider-thumb {
+  width: 13px;
+  height: 6px;
+  border-radius: 9999px;
+  margin-top: -1.25px;
+}
+
+input[type='range'].pulse-range.pulse-range-sm::-moz-range-thumb {
+  width: 13px;
+  height: 6px;
+  border-radius: 9999px;
+}
+
+input[type='range'].pulse-range:hover::-webkit-slider-thumb {
+  transform: scaleX(1.14) scaleY(1.12);
+}
+
+input[type='range'].pulse-range:hover::-moz-range-thumb {
+  transform: scaleX(1.14) scaleY(1.12);
+}
+
+/* Hide scrollbars cleanly in lyrics container while preserving scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
